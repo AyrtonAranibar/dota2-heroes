@@ -44,7 +44,7 @@ function printHeroes(){
 		<div>${heroe.roles.map(rol =>`<p>${rol}</p>`).join('')}</div>
 		<div><img src="images/${heroe.attack_range < 176  ? 'melee.png' : 'ranger.png'}" alt="attack-type"></div>
 	</div>
-	`).slice(contador,(contador+1)*20).join('')}
+	`).slice(contador*20,(contador+1)*20).join('')}
 	`;
 	cardsContainer.innerHTML = heroCard;
 }
