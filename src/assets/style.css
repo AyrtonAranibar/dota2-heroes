@@ -1,7 +1,5 @@
 *{
     box-sizing: border-box;
-    font-family: 'Dongle', sans-serif;
-    color: var(--dark-grey);
     letter-spacing: -0.5pt; 
 }
 :root{
@@ -31,6 +29,10 @@ h1{
 h2{
     padding-left: 1em;
     font-family: 'Archivo Black', sans-serif;
+}
+li a{
+    font-family: 'Dongle', sans-serif;
+    color: white;
 }
 body{
     background-color: #f0f2f5;
@@ -111,6 +113,7 @@ li img{
     margin:0px;
     font-size: var(--md);
     color: white;
+    font-family: 'Dongle', sans-serif;
     font-weight: lighter;
     line-height: 1em;
 }
@@ -173,6 +176,7 @@ li img{
     text-align: center;
     font-family: 'Archivo Black', sans-serif;
 }
+
 .hero-card :first-child{
     grid-area: 1 / 1 / 2 / 3;
 }
@@ -184,6 +188,7 @@ li img{
     display: flex;
     justify-content: center;
     align-items: center;
+    font-family: 'Archivo Black', sans-serif;
 }
 .hero-card :nth-child(4){ 
     /* Atributo */
@@ -208,6 +213,7 @@ li img{
     font-size: var(--sm);
     margin: 0;
     padding: 0;
+    font-family: 'Dongle', sans-serif;
 }
 .hero-card :nth-child(5) img{
     width: auto;
