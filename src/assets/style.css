@@ -83,9 +83,6 @@ li img{
     gap: .5em;
     list-style: none;
 }
-.left-section nav ul li{
-
-}
 .left-section nav ul li a{
     display: inline-block;
     font-size: var(--sm);
@@ -315,10 +312,14 @@ path{
         grid-area: 4 / 1 / 6 / 2;
         margin: 0;
     }
-    .first-list{
+    .left-section nav ul .first-list{
         display: flex;
-        align-items: center;
+        align-items: cent   er;
         justify-content: center;
+        color: white;
+        background-color: black;
+    }
+    #first-list li i{
         color: white;
     }
     nav{
