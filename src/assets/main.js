@@ -30,7 +30,7 @@ function printHeroes(){
 	let heroCard = `
 	${heroes.map(heroe =>`
 	<div class="hero-card">
-		<div><img src="${page}${heroe.img}" alt="${heroe.localized_name}"></div>
+		<div><img src="${page}${heroe.img}" class="hero-card-img" alt="${heroe.localized_name}"></div>
 		<div>
 			<div class="health-bar">
 				<div class="health" style="width:${Math.trunc(((heroe.base_str*22 + 120)/vidaMaxima)*100)}%"></div>
