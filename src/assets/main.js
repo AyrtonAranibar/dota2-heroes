@@ -26,6 +26,28 @@ async function fetchData( urlApi){
 	return data;
 }
 
+function printHeroes(){
+	let heroCard = `
+	${heroes.map(heroe =>`
+	<div class="hero-card">
+		<div><img src="${page}${heroe.img}" alt="${heroe.localized_name}"></div>
+		<div>
+			<div class="health-bar">
+				<div class="health" style="width:${Math.trunc(((heroe.base_str*22 + 120)/vidaMaxima)*100)}%"></div>
+			</div>
+			<div class="mana-bar">
+				<div class="mana" style="width:${Math.trunc(((heroe.base_int*12 + 75)/manaMaximo)*100)}%"></div>
+			</div>
+		</div>
+		<div><p class="hero-name">${heroe.localized_name}</p></div>
+		<div><img src="images/${heroe.primary_attr}.webp" alt="attribute"></div>
+		<div>${heroe.roles.map(rol =>`<p>${rol}</p>`).join('')}</div>
+		<div><img src="images/${heroe.attack_range < 176  ? 'melee.png' : 'ranger.png'}" alt="attack-type"></div>
+	</div>
+	`).slice(contador,(contador+1)*20).join('')}
+	`;
+	cardsContainer.innerHTML = heroCard;
+}
 
 window.addEventListener('load', (event) => {
 	(async function fetchHeroes(){
