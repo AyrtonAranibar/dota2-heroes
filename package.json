@@ -16,7 +16,7 @@
   "bugs": {
     "url": "https://github.com/AyrtonAranibar/async-landing/issues"
   },
-  "homepage": "https://github.com/AyrtonAranibar/async-landing#readme",
+  "homepage": "https://github.com/AyrtonAranibar/async-landing/src/",
   "devDependencies": {
     "gh-pages": "^5.0.0"
   }
