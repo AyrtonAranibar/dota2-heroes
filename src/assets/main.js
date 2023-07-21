@@ -8,6 +8,7 @@ const health = document.querySelector('.health');
 const mana = document.querySelector('.mana');
 const leftPage = document.querySelector('.left-page');
 const rigthPage = document.querySelector('.rigth-page');
+const loadingSkeletons = document.querySelectorAll('.loading-skeleton');
 var cardsContainer = document.querySelector('.cards-container');
 var contador = 0;
 var heroes = {};
@@ -51,12 +52,17 @@ function printHeroes(){
 }
 
 window.addEventListener('load', (event) => {
+	console.log(event);
+	
 	(async function fetchHeroes(){
 		try{
 			heroes = await fetchData(API);
 			vidaMaxima = Math.max(...heroes.map(heroes => ( heroes.base_str 	* 22) + 120));
 			manaMaximo = Math.max(...heroes.map(heroes => ( heroes.base_int 	* 12) + 75));
 			contador = 0;
+			loadingSkeletons.forEach(element => {
+				element.remove();
+			  });
 			printHeroes();
 		}catch (error){
 			console.log(error);
