@@ -32,7 +32,6 @@ function imgLoadingSkeleton(){
 	const cardImages = document.querySelectorAll('.hero-card-img');
 	cardImages.forEach( img =>{
 		img.addEventListener('load',()=>{
-			console.log('cargo la imagen');
 			const siblingDiv = img.nextElementSibling;
 			siblingDiv.classList.add("hidden");
 			siblingDiv.remove();
