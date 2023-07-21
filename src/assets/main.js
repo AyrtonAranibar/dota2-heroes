@@ -28,11 +28,27 @@ async function fetchData( urlApi){
 	return data;
 }
 
+function imgLoadingSkeleton(){
+	const cardImages = document.querySelectorAll('.hero-card-img');
+	cardImages.forEach( img =>{
+		img.addEventListener('load',()=>{
+			console.log('cargo la imagen');
+			const siblingDiv = img.nextElementSibling;
+			siblingDiv.classList.add("hidden");
+			siblingDiv.remove();
+			img.classList.remove('hidden');
+		})
+	});
+}
+
 function printHeroes(){
 	let heroCard = `
 	${heroes.map(heroe =>`
 	<div class="hero-card">
-		<div><img src="${page}${heroe.img}" class="hero-card-img" alt="${heroe.localized_name}"></div>
+		<div>
+			<img src="${page}${heroe.img}" class="hero-card-img hidden" alt="${heroe.localized_name}">
+			<div class="card-image-skeleton"></div>
+		</div>
 		<div>
 			<div class="health-bar">
 				<div class="health" style="width:${Math.trunc(((heroe.base_str*22 + 120)/vidaMaxima)*100)}%"></div>
@@ -52,7 +68,6 @@ function printHeroes(){
 }
 
 window.addEventListener('load', (event) => {
-	console.log(event);
 	
 	(async function fetchHeroes(){
 		try{
@@ -64,6 +79,7 @@ window.addEventListener('load', (event) => {
 				element.remove();
 			  });
 			printHeroes();
+			imgLoadingSkeleton();
 		}catch (error){
 			console.log(error);
 		}
@@ -73,6 +89,7 @@ window.addEventListener('load', (event) => {
 leftPage.addEventListener("click", ()=>{
 	contador--;
 	printHeroes();
+	imgLoadingSkeleton();
 	if(contador != 6)rigthPage.style.display = "flex";
 	if(contador == 0)leftPage.style.display = "none";
 	
@@ -81,6 +98,7 @@ leftPage.addEventListener("click", ()=>{
 rigthPage.addEventListener("click", ()=>{
 	contador++;
 	printHeroes();
+	imgLoadingSkeleton();
 	if(contador == 6)rigthPage.style.display = "none";
 	if(contador != 0)leftPage.style.display = "flex";
 	
