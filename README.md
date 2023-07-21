@@ -3,10 +3,10 @@
 
 Es un pequeño proyecto hecho con openDota API https://docs.opendota.com/, se utilizaron los conocimientos obtenidos en Platzi.
 
-## URL
+# URL
 https://ayrtonaranibar.github.io/async-landing/
 
-### Authors
+# Autor
 
 - [@AyrtonAranibar](https://www.github.com/AyrtonAranibar)
 
