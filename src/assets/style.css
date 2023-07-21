@@ -40,6 +40,7 @@ body{
     overflow-x: hidden;
 }
 header{
+    position: relative;
     background-color: var(--dark-blue);
     overflow: hidden;
 }
@@ -76,6 +77,7 @@ li img{
 }
 .left-section{
     max-height: inherit;
+    padding-bottom: 3em;
 }
 .left-section nav ul{
     margin: 0;
@@ -96,18 +98,24 @@ li img{
     max-height: inherit;
     
 }
-.right-section img{
-    /* width: 100%; */
-    max-height: inherit;
+.header-image{
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 50%;
+    height: 100%;
     display: block;
     object-fit: cover;
     clip-path: polygon(10% 0, 100% 0, 100% 75vh, 0 100%);
     overflow: hidden;
+    z-index: 1;
 }
 .about-me-container h1{
     margin: 1.2em 0px 0px 0px;
+    padding-bottom: .5em;
     font-family: 'Archivo Black', sans-serif;
     font-size: var(--lg);
+    text-transform: uppercase;
 }
 .about-me-container p{
     margin:0px;
@@ -289,6 +297,7 @@ li img{
 path{
     color: white;
 }
+
 @media (max-width: 1024px) {
     .header-container{
         max-height: fit-content;
@@ -299,10 +308,11 @@ path{
     .left-section{
         padding: 1em;
     }
-    .right-section img {
-        width: 100%;
-        height: auto;
+    .header-image{
+        position: relative;
         clip-path: none;
+        width: 100%;
+        max-height: 300px;
     }
     .cards-container{
         grid-template-columns: repeat(auto-fill, 140px);
@@ -324,9 +334,6 @@ path{
         justify-content: center;
         color: white;
         background-color: black;
-    }
-    #first-list li i{
-        color: white;
     }
     nav{
         display: none;

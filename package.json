@@ -1,5 +1,5 @@
 {
-  "name": "async-landing",
+  "name": "dota2-heroes",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -8,15 +8,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/AyrtonAranibar/async-landing.git"
+    "url": "git+https://github.com/AyrtonAranibar/dota2-heroes.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/AyrtonAranibar/async-landing/issues"
+    "url": "https://github.com/AyrtonAranibar/dota2-heroes/issues"
   },
-  "homepage": "https://github.com/AyrtonAranibar/async-landing/src/",
+  "homepage": "https://github.com/AyrtonAranibar/dota2-heroes/src/",
   "devDependencies": {
     "gh-pages": "^5.0.0"
   }
