@@ -1,7 +1,5 @@
 *{
     box-sizing: border-box;
-    font-family: 'Dongle', sans-serif;
-    color: var(--dark-grey);
     letter-spacing: -0.5pt; 
 }
 :root{
@@ -20,7 +18,6 @@ a{
 }
 p{
     margin:0px;
-    color: var(--dark-grey);
 }
 h1,h2{
     color: var(--green);
@@ -32,12 +29,17 @@ h2{
     padding-left: 1em;
     font-family: 'Archivo Black', sans-serif;
 }
+li a{
+    font-family: 'Dongle', sans-serif;
+    color: white;
+}
 body{
     background-color: #f0f2f5;
     margin: 0px;
     overflow-x: hidden;
 }
 header{
+    position: relative;
     background-color: var(--dark-blue);
     overflow: hidden;
 }
@@ -74,6 +76,7 @@ li img{
 }
 .left-section{
     max-height: inherit;
+    padding-bottom: 3em;
 }
 .left-section nav ul{
     margin: 0;
@@ -94,23 +97,30 @@ li img{
     max-height: inherit;
     
 }
-.right-section img{
-    /* width: 100%; */
-    max-height: inherit;
+.header-image{
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 50%;
+    height: 100%;
     display: block;
     object-fit: cover;
     clip-path: polygon(10% 0, 100% 0, 100% 75vh, 0 100%);
     overflow: hidden;
+    z-index: 1;
 }
 .about-me-container h1{
     margin: 1.2em 0px 0px 0px;
+    padding-bottom: .5em;
     font-family: 'Archivo Black', sans-serif;
     font-size: var(--lg);
+    text-transform: uppercase;
 }
 .about-me-container p{
     margin:0px;
     font-size: var(--md);
     color: white;
+    font-family: 'Dongle', sans-serif;
     font-weight: lighter;
     line-height: 1em;
 }
@@ -146,6 +156,41 @@ li img{
     justify-content: space-evenly;
     gap:2em;
 }
+.loading-skeleton {
+    width: 100%;
+    height: 350px;
+    border-radius: 1em;
+    position: relative; /* Agrega posición relativa al contenedor */
+    overflow: hidden; /* Para ocultar el fondo del ::before fuera del contenedor */
+}
+
+.loading-skeleton::before, .card-image-skeleton::before{
+    content: "";
+    position: absolute;
+    top: -400px;
+    left: -300px;
+    width: 700px;
+    height: 900px;
+    border-radius: 1em;
+    background: linear-gradient(0deg, rgb(201, 201, 201) 13%, rgb(150, 150, 150) 46%, rgba(224, 224, 224, 1) 83%);
+    background-size: 400% 200%;
+    animation: load 1s infinite linear;
+}
+.card-image-skeleton{
+    width: 100%;
+    height: 100%;
+    position:relative;
+    overflow: hidden;
+}
+
+@keyframes load {
+   100%{
+    transform: rotate(360deg) ;
+   }
+}
+.hidden{
+    display: none;
+}
 .hero-card{
     width: 100%;
     height: 350px;
@@ -172,7 +217,9 @@ li img{
 .hero-name{
     text-align: center;
     font-family: 'Archivo Black', sans-serif;
+    color: var(--dark-blue);
 }
+
 .hero-card :first-child{
     grid-area: 1 / 1 / 2 / 3;
 }
@@ -184,6 +231,7 @@ li img{
     display: flex;
     justify-content: center;
     align-items: center;
+    font-family: 'Archivo Black', sans-serif;
 }
 .hero-card :nth-child(4){ 
     /* Atributo */
@@ -208,6 +256,7 @@ li img{
     font-size: var(--sm);
     margin: 0;
     padding: 0;
+    font-family: 'Dongle', sans-serif;
 }
 .hero-card :nth-child(5) img{
     width: auto;
@@ -283,6 +332,7 @@ li img{
 path{
     color: white;
 }
+
 @media (max-width: 1024px) {
     .header-container{
         max-height: fit-content;
@@ -293,13 +343,17 @@ path{
     .left-section{
         padding: 1em;
     }
-    .right-section img {
-        width: 100%;
-        height: auto;
+    .header-image{
+        position: relative;
         clip-path: none;
+        width: 100%;
+        max-height: 300px;
     }
     .cards-container{
         grid-template-columns: repeat(auto-fill, 140px);
+    }
+    .loading-skeleton{
+        height: 200px;
     }
     .hero-card{
         height: 200px;
@@ -314,13 +368,10 @@ path{
     }
     .left-section nav ul .first-list{
         display: flex;
-        align-items: cent   er;
+        align-items: center;
         justify-content: center;
         color: white;
         background-color: black;
-    }
-    #first-list li i{
-        color: white;
     }
     nav{
         display: none;

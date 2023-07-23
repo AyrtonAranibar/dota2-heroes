@@ -8,6 +8,7 @@ const health = document.querySelector('.health');
 const mana = document.querySelector('.mana');
 const leftPage = document.querySelector('.left-page');
 const rigthPage = document.querySelector('.rigth-page');
+const loadingSkeletons = document.querySelectorAll('.loading-skeleton');
 var cardsContainer = document.querySelector('.cards-container');
 var contador = 0;
 var heroes = {};
@@ -23,14 +24,30 @@ const options = {
 async function fetchData( urlApi){
 	const response = await fetch(urlApi, options);
 	const data = await response.json();
+	// Desaparecer el loading squeleton
 	return data;
+}
+
+function imgLoadingSkeleton(){
+	const cardImages = document.querySelectorAll('.hero-card-img');
+	cardImages.forEach( img =>{
+		img.addEventListener('load',()=>{
+			const siblingDiv = img.nextElementSibling;
+			siblingDiv.classList.add("hidden");
+			siblingDiv.remove();
+			img.classList.remove('hidden');
+		})
+	});
 }
 
 function printHeroes(){
 	let heroCard = `
 	${heroes.map(heroe =>`
 	<div class="hero-card">
-		<div><img src="${page}${heroe.img}" class="hero-card-img" alt="${heroe.localized_name}"></div>
+		<div>
+			<img src="${page}${heroe.img}" class="hero-card-img hidden" alt="${heroe.localized_name}">
+			<div class="card-image-skeleton"></div>
+		</div>
 		<div>
 			<div class="health-bar">
 				<div class="health" style="width:${Math.trunc(((heroe.base_str*22 + 120)/vidaMaxima)*100)}%"></div>
@@ -50,13 +67,18 @@ function printHeroes(){
 }
 
 window.addEventListener('load', (event) => {
+	
 	(async function fetchHeroes(){
 		try{
 			heroes = await fetchData(API);
 			vidaMaxima = Math.max(...heroes.map(heroes => ( heroes.base_str 	* 22) + 120));
 			manaMaximo = Math.max(...heroes.map(heroes => ( heroes.base_int 	* 12) + 75));
 			contador = 0;
+			loadingSkeletons.forEach(element => {
+				element.remove();
+			  });
 			printHeroes();
+			imgLoadingSkeleton();
 		}catch (error){
 			console.log(error);
 		}
@@ -66,6 +88,7 @@ window.addEventListener('load', (event) => {
 leftPage.addEventListener("click", ()=>{
 	contador--;
 	printHeroes();
+	imgLoadingSkeleton();
 	if(contador != 6)rigthPage.style.display = "flex";
 	if(contador == 0)leftPage.style.display = "none";
 	
@@ -74,6 +97,7 @@ leftPage.addEventListener("click", ()=>{
 rigthPage.addEventListener("click", ()=>{
 	contador++;
 	printHeroes();
+	imgLoadingSkeleton();
 	if(contador == 6)rigthPage.style.display = "none";
 	if(contador != 0)leftPage.style.display = "flex";
 	
